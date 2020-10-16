@@ -16,7 +16,8 @@ namespace ShapePainter
             get
             {
                 var p = (X * Y * Z) / 2.0;
-                return p * (p - X) * (p - Y) * (p - Z);
+                var areaSq = p * (p - X) * (p - Y) * (p - Z);
+                return Math.Sqrt(areaSq);
             }
         }
 
