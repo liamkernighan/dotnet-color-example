@@ -23,9 +23,23 @@ namespace ShapePainter
 
         public double Length => X + Y + Z;
 
-        public Triangle(double x, double y, double z)
+        private void Validate(double x, double y, double z)
         {
             Helpers.AssertIsPositive(x, y, z);
+            
+            var isRight = x + y > z && x + z > y && y + z > x;
+            if (!isRight) 
+            {
+                var representation = string.Join(", ", x, y, z);
+                throw new ArgumentException($"Invalid coordinates for triangle: {representation}");
+            }
+        }
+
+
+        public Triangle(double x, double y, double z)
+        {
+            Validate(x, y, z);
+
             X = x;
             Y = y;
             Z = z;
