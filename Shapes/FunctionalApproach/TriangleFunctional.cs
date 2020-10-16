@@ -24,7 +24,7 @@ namespace ShapePainter
 
         public double Length => X + Y + Z;
 
-        public Either<ValidationError, TriangleFunctional> Create(double x, double y, double z, Color? color)
+        public Either<ValidationError, TriangleFunctional> Create(double x, double y, double z, Color? color = null)
         {
             if (new[] { x, y, z}.Any(it => it <= 0.0))
             {
